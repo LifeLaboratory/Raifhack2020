@@ -17,6 +17,6 @@ class CourierOrders(Resource):
 class CourierGps(Resource):
 
     def post(self, courier_id):
-        if self.request.method == 'POST':
-            return Provider.post_courier_gps(courier_id, self.request.form['lat'], self.request.form['lon'])
+        if Resource.request.method == 'POST':
+            return Provider.post_courier_gps(courier_id, Resource.request.form['lat'], Resource.request.form['lon'])
 
