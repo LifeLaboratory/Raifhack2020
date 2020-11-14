@@ -4,3 +4,4 @@ Werkzeug==0.16.1
 flask-cors
 qrcode
 pillow
+psycopg2-binary
