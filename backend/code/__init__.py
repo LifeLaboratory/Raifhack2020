@@ -8,3 +8,6 @@ api = Api(app=app)
 
 
 import code.test.processor
+import code.order.processor
+import code.courier.processor
+import code.client.processor
