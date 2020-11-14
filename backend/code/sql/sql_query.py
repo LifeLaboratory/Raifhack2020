@@ -25,6 +25,7 @@ SQL_SELECT_INFO_COURIER_IN_COMPANY = """
 SELECT *
 FROM raifhack.couriers
 WHERE num_company={id}
+ORDER BY id
 """
 
 SQL_SELECT_ALL_COURIERS = """
