@@ -1,4 +1,4 @@
-from app import api
+from backend.app import api
 from flask_restplus import Resource, Api
 
 
