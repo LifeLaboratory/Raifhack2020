@@ -2,8 +2,8 @@ from code import api
 from flask_restplus import Resource, fields
 from code.order.provider import Provider
 
-a_test = api.model('Test', {'msg': fields.String('PONG!')})
-a_test2 = api.model('Test2', {'data': fields.String('test_data')})
+a_test = api.model('Order', {'msg': fields.String('PONG!')})
+a_test2 = api.model('OrderId', {'data': fields.String('test_data')})
 
 
 @api.route('/order')
