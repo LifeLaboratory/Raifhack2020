@@ -46,3 +46,9 @@ SET lat={lat}, lon={lon}
 WHERE id={id}
 RETURNING TRUE 
 """
+
+SQL_INSERT_ORDER_CREATE = """
+INSERT INTO raifhack.orders (cost, number_client, address, qr_code, url_payload, qr_id, number_courier)
+VALUES ({cost}, {number_client}, '{address}', '{qr_code}', '{url_payload}', '{qr_id}', {number_courier})
+RETURNING id
+"""

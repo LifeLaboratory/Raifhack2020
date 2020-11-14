@@ -20,8 +20,6 @@ class SBPClient:
         return self.base_host + endpoint
 
     def _make_request(self, method='GET', endpoint='', headers=None, verify=False, **kwargs):
-        # self.session.headers.update({'Content-Type': 'application/json;charset=UTF-8'})
-
         if headers:
             self.session.headers.update(headers)
 
