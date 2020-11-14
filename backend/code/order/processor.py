@@ -13,7 +13,7 @@ class Test(Resource):
         return Provider.get_all_orders()
 
 
-@api.route('/api/order/<int:order_id>')
+@api.route('/api/order/<integer:order_id>')
 class Test2(Resource):
 
     def get(self, order_id):
