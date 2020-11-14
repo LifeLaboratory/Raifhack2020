@@ -9,3 +9,10 @@ SELECT *
 FROM raifhack.orders
 WHERE number_courier={id}
 """
+
+SQL_SELECT_ALL_INFO = """
+SELECT *
+FROM raifhack.companies AS com
+LEFT JOIN raifhack.couriers AS co ON (com.id = co.num_company)
+LEFT JOIN raifhack.orders AS or ON (co.id = or.number_courier)
+"""
