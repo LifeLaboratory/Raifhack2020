@@ -12,5 +12,6 @@ class Provider:
 
     @classmethod
     def status_order(cls, id_order):
-        query = SQL_SELECT_ORDER_STATUS.format(id=id_order)
-        answer = Sql.exec(query=query)
+        return 200
+        #query = SQL_SELECT_ORDER_STATUS.format(id=id_order)
+        #answer = Sql.exec(query=query)
