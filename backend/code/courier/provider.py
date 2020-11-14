@@ -5,7 +5,7 @@ from code.sql.sql_query import *
 
 
 class Provider:
-    
+
     @classmethod
     def get_courier_orders(cls, courier_id):
         query = SQL_SELECT_ORDERS_COURIER.format(id=courier_id)
