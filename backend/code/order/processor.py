@@ -17,6 +17,10 @@ class Order(Resource):
         parser.add_argument('number_client', type=int, help='number_client')
         parser.add_argument('address', type=str, help='address')
         args = parser.parse_args()
+        arguments = {}
+        arguments["cost"] = args["cost"]
+        arguments["number_client"] = args["number_client"]
+        arguments["address"] = args["address"]
         client = sbp_client.SBPClient()
         secret = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNQTQ3MzI3MSIsImp0aSI6IjIwOWI3MjNkLTdmZm' \
                  'ItNDZhZi05YzU4LWFmZjFiMWI4YzRlNSJ9.lLZtvflKgxHPTmaZbH4cnOw2_1NE_f4LFP7fbVVnOSc'
@@ -32,11 +36,11 @@ class Order(Resource):
             additionalInfo='RifeHuck 2020',
             currency='RUB',
         )
-        args["qr_code"] = registered.get('qrUrl')
-        args["url_payload"] = registered.get('payload')
-        args["qr_id"] = registered.get('qrId')
-        args["number_courier"] = 1
-        return Provider.create_order(args)
+        arguments["qr_code"] = registered.get('qrUrl')
+        arguments["url_payload"] = registered.get('payload')
+        arguments["qr_id"] = registered.get('qrId')
+        arguments["number_courier"] = 1
+        return Provider.create_order(arguments)
 
 
 @api.route('/api/order')
