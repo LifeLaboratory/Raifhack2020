@@ -13,3 +13,10 @@ class CourierOrders(Resource):
         return Provider.get_courier_orders(courier_id)
 
 
+@api.route('/api/courier/orders/<courier_id>', methods=['POST'])
+class CourierGps(Resource):
+
+    def post(self, courier_id):
+        if CourierGps.request.method == 'POST':
+            return Provider.post_courier_gps(courier_id, CourierGps.request.form['lat'], CourierGps.request.form['lon'])
+
