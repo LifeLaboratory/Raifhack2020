@@ -1,6 +1,6 @@
-from backend.app import api
+from app import api
 from flask_restplus import Resource, fields
-from backend.app.test.provider import Provider
+from app.test.provider import Provider
 
 a_test = api.model('Test', {'msg': fields.String('PONG!')})
 a_test2 = api.model('Test2', {'data': fields.String('test_data')})
