@@ -31,3 +31,11 @@ SQL_SELECT_ALL_COURIERS = """
 SELECT *
 FROM raifhack.couriers
 """
+
+SQL_SELECT_ACTIVE_ORDERS = """
+SELECT *
+FROM raifhack.orders as or
+LEFT JOIN raifhack.couriers as co ON (co.id = or.number_courier)
+LEFT JOIN raifhack.clients as cl ON (cl.id = or.number_client)
+WHERE or.status_order is NULL 
+"""

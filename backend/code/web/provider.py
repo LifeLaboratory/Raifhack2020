@@ -24,4 +24,9 @@ class Provider:
         query = SQL_SELECT_ALL_COURIERS
         return Sql.exec(query=query)
 
+    @classmethod
+    def get_active_orders(cls):
+        query = SQL_SELECT_ACTIVE_ORDERS
+        return Sql.exec(query=query)
+
 
