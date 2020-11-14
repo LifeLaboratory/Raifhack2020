@@ -8,9 +8,3 @@ services:
     restart: always
     ports:
       - 1337:1337
-    volumes:
-      - ./app:/app:ro
-    read_only: true
-    pids_limit: 256
-    mem_limit: 512M
-    cpus: 0.25
