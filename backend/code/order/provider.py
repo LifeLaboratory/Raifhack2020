@@ -7,5 +7,5 @@ from code.sql.sql_query import *
 class Provider:
     @classmethod
     def create_order(cls, args):
-        query = SQL_INSERT_ORDER_CREATE.format(*args)
+        query = SQL_INSERT_ORDER_CREATE.format(**args)
         return Sql.exec(query=query)
