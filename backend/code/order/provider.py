@@ -9,3 +9,8 @@ class Provider:
     def create_order(cls, args):
         query = SQL_INSERT_ORDER_CREATE.format(**args)
         return Sql.exec(query=query)
+
+    @classmethod
+    def status_order(cls, id_order):
+        query = SQL_SELECT_ORDER_STATUS.format(id=id_order)
+        answer = Sql.exec(query=query)
