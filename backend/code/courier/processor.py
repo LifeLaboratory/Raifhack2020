@@ -6,7 +6,7 @@ a_test = api.model('Test', {'msg': fields.String('PONG!')})
 a_test2 = api.model('Test2', {'data': fields.String('test_data')})
 
 
-@api.route('/api/courier/orders/<integer:courier_id>')
+@api.route('/api/courier/orders/<courier_id>')
 class Test(Resource):
 
     def get(self, courier_id):
