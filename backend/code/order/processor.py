@@ -14,8 +14,8 @@ class Order(Resource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('cost', type=float, help='cost')
-        parser.add_argument('number_client', type=float, help='number_client')
-        parser.add_argument('address', type=float, help='address')
+        parser.add_argument('number_client', type=int, help='number_client')
+        parser.add_argument('address', type=str, help='address')
         args = parser.parse_args()
         client = sbp_client.SBPClient()
         secret = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNQTQ3MzI3MSIsImp0aSI6IjIwOWI3MjNkLTdmZm' \
