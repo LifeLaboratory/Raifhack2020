@@ -25,6 +25,11 @@ class Provider:
         return Sql.exec(query=query)
 
     @classmethod
+    def get_gps_courier_id(cls, courier_id):
+        query = SQL_SELECT_INFO_COURIER(id=courier_id)
+        return Sql.exec(query=query)
+
+    @classmethod
     def get_active_orders(cls):
         query = SQL_SELECT_ACTIVE_ORDERS
         return Sql.exec(query=query)
