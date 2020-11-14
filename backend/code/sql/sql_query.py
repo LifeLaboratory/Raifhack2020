@@ -39,3 +39,10 @@ LEFT JOIN raifhack.couriers AS co ON (co.id = ord.number_courier)
 LEFT JOIN raifhack.clients AS cl ON (cl.id = ord.number_client)
 WHERE ord.status_order is NULL
 """
+
+SQL_UPDATE_COURIER_GPS = """
+UPDATE raifhack.couriers
+SET lat={lat}, lon={lon}
+WHERE id={id}
+RETURNING TRUE 
+"""
