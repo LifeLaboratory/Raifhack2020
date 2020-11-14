@@ -10,11 +10,13 @@ a_test2 = api.model('Test2', {'data': fields.String('test_data')})
 class Order(Resource):
 
     def get(self):
-        return Provider.get_all_orders()
+        return 200
+        #return Provider.get_all_orders()
 
 
 @api.route('/api/order/<order_id>')
 class OrderId(Resource):
 
     def get(self, order_id):
-        return Provider.get_order(order_id)
+        return 200
+        #return Provider.get_order(order_id)
