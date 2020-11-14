@@ -34,8 +34,8 @@ FROM raifhack.couriers
 
 SQL_SELECT_ACTIVE_ORDERS = """
 SELECT *
-FROM raifhack.orders as or
-LEFT JOIN raifhack.couriers as co ON (co.id = or.number_courier)
-LEFT JOIN raifhack.clients as cl ON (cl.id = or.number_client)
-WHERE or.status_order is NULL 
+FROM raifhack.orders AS ord
+LEFT JOIN raifhack.couriers AS co ON (co.id = ord.number_courier)
+LEFT JOIN raifhack.clients AS cl ON (cl.id = ord.number_client)
+WHERE ord.status_order is NULL
 """
