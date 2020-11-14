@@ -16,6 +16,7 @@ class Order(Resource):
         parser.add_argument('cost', type=float, help='cost')
         parser.add_argument('number_client', type=int, help='number_client')
         parser.add_argument('address', type=str, help='address')
+        parser.add_argument('number_courier', type=int, help='number_courier')
         args = parser.parse_args()
         arguments = {}
         arguments["cost"] = args["cost"]
