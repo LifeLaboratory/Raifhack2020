@@ -7,4 +7,4 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 api = Api(app=app)
 
 
-import app.test.processor
+import backend.app.test.processor
