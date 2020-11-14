@@ -6,14 +6,14 @@ a_test = api.model('Test', {'msg': fields.String('PONG!')})
 a_test2 = api.model('Test2', {'data': fields.String('test_data')})
 
 
-@api.route('/api/order')
+@api.route('/order')
 class Order(Resource):
 
     def get(self):
         return Provider.get_all_orders()
 
 
-@api.route('/api/order/<order_id>')
+@api.route('/order/<order_id>')
 class OrderId(Resource):
 
     def get(self, order_id):
