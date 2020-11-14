@@ -40,7 +40,7 @@ class Order(Resource):
         arguments["url_payload"] = registered.get('payload')
         arguments["qr_id"] = registered.get('qrId')
         arguments["number_courier"] = 1
-        return Provider.create_order(arguments)
+        return Provider.create_order(arguments)[0]["id"]
 
 
 @api.route('/api/order')
