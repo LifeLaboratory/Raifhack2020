@@ -10,6 +10,7 @@ a_test2 = api.model('Test2', {'data': fields.String('test_data')})
 class CourierOrders(Resource):
 
     def get(self, courier_id):
-        return Provider.get_courier_orders(courier_id)
+        return 200
+        #return Provider.get_courier_orders(courier_id)
 
 

@@ -1,6 +1,4 @@
-from code import api
-from flask_restplus import Resource, Api
-from base.base_sql import Sql
+from code.base.base_sql import Sql
 from sql.sql_query import *
 
 

@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-import base.base_errors as errors
+import code.base.base_errors as errors
 from config import DATABASE
 
 
