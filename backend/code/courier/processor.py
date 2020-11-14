@@ -1,5 +1,5 @@
 from code import api
-from flask_restplus import Resource, fields
+from flask_restplus import Resource, fields, reqparse
 from code.courier.provider import Provider
 
 a_test = api.model('Test', {'msg': fields.String('PONG!')})
@@ -17,6 +17,9 @@ class CourierOrders(Resource):
 class CourierGps(Resource):
 
     def post(self, courier_id):
-        if Resource.request.method == 'POST':
-            return Provider.post_courier_gps(courier_id, Resource.request.form['lat'], Resource.request.form['lon'])
+        parser = reqparse.RequestParser()
+        parser.add_argument('lat', type=float, help='lat')
+        parser.add_argument('lon', type=float, help='lon')
+        args = parser.parse_args()
+        return Provider.post_courier_gps(courier_id, args['lat'], args['lon'])
 
