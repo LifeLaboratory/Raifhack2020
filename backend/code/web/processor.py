@@ -4,7 +4,13 @@ from code.web.provider import Provider
 
 
 @api.route('/api/web/all_info')
-class Client(Resource):
+class AllInfo(Resource):
 
     def get(self):
         return Provider.get_all_info()
+
+@api.route('/api/web/gps_couriers')
+class GpsCouriers(Resource):
+
+    def get(self):
+        return Provider.get_gps_couriers()

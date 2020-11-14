@@ -26,3 +26,8 @@ SELECT *
 FROM raifhack.couriers
 WHERE num_company={id}
 """
+
+SQL_SELECT_ALL_COURIERS = """
+SELECT *
+FROM raifhack.couriers
+"""

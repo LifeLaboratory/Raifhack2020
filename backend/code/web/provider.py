@@ -19,3 +19,9 @@ class Provider:
             all_info.append(info_company)
         return all_info
 
+    @classmethod
+    def get_gps_couriers(cls):
+        query = SQL_SELECT_ALL_COURIERS
+        return Sql.exec(query=query)
+
+
