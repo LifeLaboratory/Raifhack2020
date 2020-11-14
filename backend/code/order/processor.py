@@ -44,7 +44,7 @@ class OrderCreate(Resource):
         return Provider.create_order(arguments)[0]["id"]
 
 
-@api.route('/api/order')
+@api.route('/api/order/update')
 class OrderCheck(Resource):
 
     def get(self):
