@@ -7,14 +7,14 @@ a_test2 = api.model('Test2', {'data': fields.String('test_data')})
 
 
 @api.route('/api/order')
-class Test(Resource):
+class Order(Resource):
 
     def get(self):
         return Provider.get_all_orders()
 
 
 @api.route('/api/order/<order_id>')
-class Test2(Resource):
+class OrderId(Resource):
 
     def get(self, order_id):
         return Provider.get_order(order_id)
