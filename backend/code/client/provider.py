@@ -1,5 +1,5 @@
 from code.base.base_sql import Sql
-from sql.sql_query import *
+from code.sql.sql_query import *
 
 
 class Provider:
