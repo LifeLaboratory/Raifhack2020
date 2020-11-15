@@ -30,7 +30,7 @@ class OrderCreate(Resource):
         client.add_merchant_id('MA0000000279')
         registered = client.register_qr_code(
             createDate=datetime.now().isoformat() + '+07:00',
-            order='Заказ Life Laboratory #{0} Дата: {1}'.format(args["number_client"], str(datetime.now())),
+            order='Заказ Life {}'.format(str(datetime.now())),
             qrTypes='QRDynamic',
             sbpMerchantId='MA0000000279',
             paymentDetails='Проверка работы',
