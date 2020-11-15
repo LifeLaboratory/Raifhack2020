@@ -8,6 +8,7 @@ const routes = [
       { path: 'courier_list', component: () => import('pages/Couriers.vue')},
       { path: 'couer/detail_map/:id', props: true, component: () => import('pages/Detail_map.vue')},
       { path: 'company/', component: () => import('pages/Company.vue')},
+      { path: 'orders/', component: () => import('pages/Orders.vue')},
 
     ]
   },
