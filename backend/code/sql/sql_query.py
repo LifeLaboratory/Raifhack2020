@@ -68,7 +68,7 @@ RETURNING id
 SQL_SELECT_ORDER_STATUS = """
 SELECT *
 FROM raifhack.orders
-WHERE paymentstatus != 'ACWP'
+WHERE paymentstatus != 'ACWP' or paymentstatus is NULL
 """
 
 SQL_UPDATE_OREDER_STATUS = """
