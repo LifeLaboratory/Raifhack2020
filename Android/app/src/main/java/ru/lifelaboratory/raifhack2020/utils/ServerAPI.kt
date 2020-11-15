@@ -23,11 +23,12 @@ data class Order(
     val cost: Double = 0.0,
     var number_courier: Int = 0,
     var number_client: Int = 0,
-    var status_order: Boolean = false,
+    var status_order: Boolean? = false,
     var check: String = "No",
     var rating: Int = 0,
     val address: String = "",
-    var qr_code: String = "http://yandex.ru"
+    var qr_code: String = "http://yandex.ru",
+    var url_payload: String = "http://yandex.ru"
 )
 
 data class Location(
@@ -38,6 +39,7 @@ data class Location(
 var idClient: Int = 0
 var qrUrlClient: String = ""
 var addressClient: String = ""
+var statusOrderClient: String = ""
 
 interface ServerAPI {
 

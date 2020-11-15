@@ -4,6 +4,9 @@ import android.Manifest.permission.CALL_PHONE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.nfc.NdefMessage
+import android.nfc.NdefRecord
+import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,10 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ru.lifelaboratory.raifhack2020.R
-import ru.lifelaboratory.raifhack2020.utils.Client
-import ru.lifelaboratory.raifhack2020.utils.ServerAPI
-import ru.lifelaboratory.raifhack2020.utils.addressClient
-import ru.lifelaboratory.raifhack2020.utils.idClient
+import ru.lifelaboratory.raifhack2020.utils.*
 
 
 class DashboardFragment : Fragment() {
@@ -41,6 +41,7 @@ class DashboardFragment : Fragment() {
         val addresClientView: TextView = root.findViewById(R.id.address_client)
         val phoneClientView: TextView = root.findViewById(R.id.phone_client)
         val qrClientView: ImageView = root.findViewById(R.id.qr_client)
+        val statusOrderClientView: TextView = root.findViewById(R.id.status_order_client)
 
         run {
             val server = ServerAPI.create()
@@ -54,12 +55,12 @@ class DashboardFragment : Fragment() {
                     nameClientView.text = response?.body()!!.name + " " + response?.body()!!.surname
                     addresClientView.text = addressClient
                     phoneClientView.text = response?.body()!!.number.toString()
-
+                    statusOrderClientView.text = statusOrderClient
                     Picasso.with(context)
-                        .load("https://e-commerce.raiffeisen.ru/api/sbp/v1/qr/AD100004BAL7227F9BNP6KNE007J9B3K/image")
+                        .load(qrUrlClient)
                         .placeholder(R.drawable.logo_life)
                         .error(R.drawable.logo_life)
-                        .fit()
+                        .fit().centerInside()
                         .into(qrClientView)
 
                     phoneClientView.setOnClickListener(object: View.OnClickListener{

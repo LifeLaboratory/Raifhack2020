@@ -55,6 +55,12 @@ class HomeFragment : Fragment() {
                         idClient = response?.body()!![position].number_client
                         qrUrlClient = response?.body()!![position].qr_code
                         addressClient = response?.body()!![position].address
+                        Log.e("TEST", response?.body()!![position].toString())
+                        when (response?.body()!![position].status_order) {
+                            null -> statusOrderClient = "В процессе"
+                            true -> statusOrderClient = "Выполнен"
+                            false -> statusOrderClient = "Отменен"
+                        }
                         fragmentManager!!.beginTransaction().replace(R.id.nav_host_fragment, DashboardFragment()).commit()
                     }
                 }

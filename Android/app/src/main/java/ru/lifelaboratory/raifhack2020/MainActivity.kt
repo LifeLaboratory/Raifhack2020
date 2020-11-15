@@ -6,18 +6,19 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.*
+import android.location.Location
 import android.location.LocationListener
+import android.location.LocationManager
+import android.net.Uri
 import android.nfc.NdefMessage
 import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
+import android.nfc.NfcAdapter.CreateNdefMessageCallback
 import android.nfc.cardemulation.HostApduService
 import android.os.Bundle
-import android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -25,7 +26,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,8 +65,19 @@ class MainActivity : AppCompatActivity(), LocationListener {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-//        mNfcAdapter = NfcAdapter.getDefaultAdapter(this)
-//        initNFCFunction()
+        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.NFC) == PackageManager.PERMISSION_GRANTED) {
+            startActivity(intent);
+        } else {
+            requestPermissions(arrayOf(Manifest.permission.NFC, Manifest.permission.BIND_NFC_SERVICE), 1);
+        }
+
+        val nfc = NfcAdapter.getDefaultAdapter(this)
+        nfc.setNdefPushMessageCallback(CreateNdefMessageCallback
+        {
+            val uriRecord: NdefRecord =
+                NdefRecord.createUri(Uri.parse("https://qr.nspk.ru/AD75B0C97610446B8B9F2C6ED5717058?type=02&bank=10000001&sum=8290&cur=RUB&crc=C08B"))
+            NdefMessage(arrayOf(uriRecord))
+        }, this, this)
 
     }
 
@@ -109,7 +124,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
             ).show()
         } else {
             val intent = Intent(this, KHostApduService::class.java)
-            intent.putExtra("ndefMessage", "http://yandex.ru")
+            intent.putExtra("ndefMessage", "https://qr.nspk.ru/AD64BD885C8D4E9E8A1865794D1F5203?type=02&bank=10000001&sum=8290&cur=RUB&crc=C08B")
             startService(intent)
         }
     }
