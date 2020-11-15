@@ -69,4 +69,12 @@ SQL_UPDATE_OREDER_STATUS = """
 UPDATE raifhack.orders
 SET paymentstatus = '{pays}', transactionDate = '{date}', status_order = TRUE 
 WHERE id = {id}
+RETURNING number_courier
+"""
+
+SQL_UPDATE_STATUS_COURIER = """
+UPDATE raifhack.couriers
+SET status = {status}
+WHERE id = {id}
+RETURNING id
 """

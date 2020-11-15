@@ -8,6 +8,8 @@ from code.utils import sbp_client
 class Provider:
     @classmethod
     def create_order(cls, args):
+        quer = SQL_UPDATE_STATUS_COURIER.format(id=args["number_courier"], status=True)
+        Sql.exec(query=quer)
         query = SQL_INSERT_ORDER_CREATE.format(**args)
         return Sql.exec(query=query)
 
@@ -26,4 +28,6 @@ class Provider:
                 quer = SQL_UPDATE_OREDER_STATUS.format(pays=answ.get("paymentStatus"),
                                                        date=answ.get("transactionDate"),
                                                        id=ans["id"])
+                courier_id = Sql.exec(query=quer)[0]["number_courier"]
+                quer = SQL_UPDATE_STATUS_COURIER.format(id=courier_id, status=False)
                 Sql.exec(query=quer)
