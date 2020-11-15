@@ -1,4 +1,5 @@
-from code.utils.sbp_client import SPBClient
+from code.utils.sbp_client import SBPClient
+from datetime import datetime
 
 if __name__ == '__main__':
     client = SBPClient()
@@ -18,8 +19,9 @@ if __name__ == '__main__':
         currency='RUB',
     )
 
-    # print(registered)
+    print(registered)
     qrid = registered.get('qrId')
-
     payment = client.get_transaction(qrid)
+    print(payment)
     payment = client.get_qr_info(qrid)
+    print(payment)

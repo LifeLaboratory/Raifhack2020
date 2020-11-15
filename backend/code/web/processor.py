@@ -21,7 +21,7 @@ class GpsCouriers(Resource):
 class GpsCourierId(Resource):
 
     def get(self, courier_id):
-        return Provider.get_gps_courier_id(courier_id)
+        return Provider.get_gps_courier_id(courier_id)[0]
 
 
 @api.route('/api/web/active_orders')

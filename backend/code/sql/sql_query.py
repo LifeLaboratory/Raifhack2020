@@ -25,6 +25,7 @@ SQL_SELECT_INFO_COURIER_IN_COMPANY = """
 SELECT *
 FROM raifhack.couriers
 WHERE num_company={id}
+ORDER BY id
 """
 
 SQL_SELECT_ALL_COURIERS = """
@@ -45,4 +46,22 @@ UPDATE raifhack.couriers
 SET lat={lat}, lon={lon}
 WHERE id={id}
 RETURNING TRUE 
+"""
+
+SQL_INSERT_ORDER_CREATE = """
+INSERT INTO raifhack.orders (cost, number_client, address, qr_code, url_payload, qr_id, number_courier)
+VALUES ({cost}, {number_client}, '{address}', '{qr_code}', '{url_payload}', '{qr_id}', {number_courier})
+RETURNING id
+"""
+
+SQL_SELECT_ORDER_STATUS = """
+SELECT *
+FROM raifhack.orders
+WHERE paymentstatus != 'SUCCESS'
+"""
+
+SQL_UPDATE_OREDER_STATUS = """
+UPDATE raifhack.orders
+SET paymentstatus = '{pays}', transactionDate = '{date}', status_order = TRUE 
+WHERE id = {id}
 """
