@@ -4,6 +4,11 @@ FROM raifhack.clients
 WHERE id={id}
 """
 
+SQL_SELECT_INFO_CLIENTS = """
+SELECT *
+FROM raifhack.clients
+"""
+
 SQL_SELECT_INFO_COURIER = """
 SELECT *
 FROM raifhack.couriers

@@ -10,4 +10,7 @@ a_test2 = api.model('Test2', {'data': fields.String('test_data')})
 class Client(Resource):
 
     def get(self, client_id):
+        if not client_id:
+            return Provider.get_clients_info()
         return Provider.get_client_info(client_id)[0]
+

@@ -16,7 +16,7 @@ class Provider:
                 query = SQL_SELECT_ORDERS_COURIER.format(id=qu["id"])
                 qu["orders"] = Sql.exec(query=query)
                 info_company.append(qu)
-            all_info.append({"name": que.get("name"), "requisites": que.get('name'), "data": info_company})
+            all_info.append({"name": que.get("name"), "requisites": que.get('requisites'), "data": info_company})
         return all_info
 
     @classmethod
