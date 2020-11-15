@@ -15,6 +15,12 @@ FROM raifhack.couriers
 WHERE id={id}
 """
 
+SQL_SELECT_INFO_COURIERS = """
+SELECT *
+FROM raifhack.couriers
+ORDER BY id
+"""
+
 SQL_SELECT_ORDERS_COURIER = """
 SELECT *
 FROM raifhack.orders

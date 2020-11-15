@@ -19,3 +19,13 @@ class Provider:
         except:
             answer = False
         return answer
+
+    @classmethod
+    def get_courier_info(cls, courier_id):
+        query = SQL_SELECT_INFO_COURIER.format(id=courier_id)
+        return Sql.exec(query=query)
+
+    @classmethod
+    def get_couriers_info(cls):
+        query = SQL_SELECT_INFO_COURIERS
+        return Sql.exec(query=query)

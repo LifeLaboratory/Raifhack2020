@@ -23,3 +23,18 @@ class CourierGps(Resource):
         args = parser.parse_args()
         return Provider.post_courier_gps(courier_id, args['lat'], args['lon'])
 
+
+@api.route('/api/courier/<courier_id>')
+class Client(Resource):
+
+    def get(self, courier_id):
+        return Provider.get_courier_info(courier_id)[0]
+
+
+@api.route('/api/couriers')
+class Clients(Resource):
+
+    def get(self):
+        return Provider.get_couriers_info()
+
+
