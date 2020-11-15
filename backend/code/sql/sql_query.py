@@ -73,7 +73,7 @@ WHERE paymentstatus != 'SUCCESS'
 
 SQL_UPDATE_OREDER_STATUS = """
 UPDATE raifhack.orders
-SET paymentstatus = '{pays}', transactionDate = '{date}', status_order = TRUE 
+SET paymentstatus = '{pays}', status_order = TRUE 
 WHERE id = {id}
 RETURNING number_courier
 """

@@ -27,15 +27,15 @@ class OrderCreate(Resource):
         secret = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNQTQ3MzI3MSIsImp0aSI6IjIwOWI3MjNkLTdmZm' \
                  'ItNDZhZi05YzU4LWFmZjFiMWI4YzRlNSJ9.lLZtvflKgxHPTmaZbH4cnOw2_1NE_f4LFP7fbVVnOSc'
         client.add_secret_key(secret)
-        client.add_merchant_id('MA473271')
+        client.add_merchant_id('MA0000000279')
         registered = client.register_qr_code(
             createDate=datetime.now().isoformat() + '+07:00',
-            order='1-22-33',
+            order='Заказ Life Laboratory #{0} Дата: {1}'.format(args["number_client"], str(datetime.now())),
             qrTypes='QRDynamic',
-            sbpMerchantId='MA473271',
+            sbpMerchantId='MA0000000279',
             paymentDetails='Проверка работы',
             amount=args["cost"],
-            additionalInfo='RifeHuck 2020',
+            additionalInfo='RaifHack 2020',
             currency='RUB',
         )
         arguments["qr_code"] = registered.get('qrUrl')

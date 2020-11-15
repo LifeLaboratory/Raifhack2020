@@ -9,7 +9,7 @@ API SBP: https://e-commerce.raiffeisen.ru/api/doc/sbp.html#tag/qr-controller
 class SBPClient:
     def __init__(self):
         self.session = req.Session()
-        self.base_host = 'https://test.ecom.raiffeisen.ru'
+        self.base_host = 'https://e-commerce.raiffeisen.ru'
         self.secret_key = None
         self.merchant_id = None
 
@@ -64,10 +64,14 @@ class SBPClient:
         return self._make_request(method='POST', endpoint=endpoint, **kwargs)
 
     def get_transaction(self, qrId):
-        endpoint = f'/api/sbp/v1/qr/{qrId}/payment-info'
+        endpoint = f'/api/sbp/v1/qr/{qrId}/payment-status'
         kwargs = {'qrId': qrId}
         headers = {'Authorization': f'Bearer {self.secret_key}'}
         return self._make_request(method='GET', endpoint=endpoint, headers=headers, **kwargs)
+
+    def get_status(self, qrId):
+        url = 'https://e-commerce.raiffeisen.ru/api/sbp/v1/qr/{}/payment-status'.format(qrId)
+        return req.get(url).text
 
     def get_qr_info(self, qrId):
         endpoint = f'/api/sbp/v1/qr/{qrId}/info'

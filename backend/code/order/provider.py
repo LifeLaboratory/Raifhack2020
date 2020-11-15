@@ -22,11 +22,10 @@ class Provider:
             secret = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNQTQ3MzI3MSIsImp0aSI6IjIwOWI3MjNkLTdmZm' \
                      'ItNDZhZi05YzU4LWFmZjFiMWI4YzRlNSJ9.lLZtvflKgxHPTmaZbH4cnOw2_1NE_f4LFP7fbVVnOSc'
             client.add_secret_key(secret)
-            client.add_merchant_id('MA473271')
-            answ = client.get_transaction(ans["qr_id"])
-            if answ.get("paymentStatus") == "SUCCESS":
-                quer = SQL_UPDATE_OREDER_STATUS.format(pays=answ.get("paymentStatus"),
-                                                       date=answ.get("transactionDate"),
+            client.add_merchant_id('MA0000000279')
+            answ = client.get_status(ans["qr_id"])
+            if "ACWP" in answ:
+                quer = SQL_UPDATE_OREDER_STATUS.format(pays="ACWP",
                                                        id=ans["id"])
                 courier_id = Sql.exec(query=quer)[0]["number_courier"]
                 quer = SQL_UPDATE_STATUS_COURIER.format(id=courier_id, status=False)
