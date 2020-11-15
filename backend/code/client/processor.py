@@ -11,6 +11,11 @@ class Client(Resource):
 
     def get(self, client_id):
         if not client_id:
-            return Provider.get_clients_info()
         return Provider.get_client_info(client_id)[0]
+
+@api.route('/api/clients')
+class Clients(Resource):
+
+    def get(self):
+        return Provider.get_clients_info()
 
